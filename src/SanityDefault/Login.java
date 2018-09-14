@@ -63,7 +63,7 @@ public class Login extends CommonFunctions1 {
 	public boolean login(ConfigurationProperties configurationProperties) {
 		boolean result = false;
 		try {
-			String URL = configurationProperties.getProperty("url_ZSN_staging");
+			String URL = configurationProperties.getProperty("url_ZSN");
 
 			// Launch URL
 			driver.manage().window().maximize();
@@ -72,12 +72,12 @@ public class Login extends CommonFunctions1 {
 			// Enter credentials & click Login button
 			sendKeys(By.id("login-email"), username);
 			logger.log(LogStatus.INFO, "username entered is " + username);
-			/*
-			 * sendKeys(By.id("login-password"), new
-			 * String(DatatypeConverter.parseBase64Binary(password),
-			 * StandardCharsets.UTF_8));
-			 */
-			sendKeys(By.id("login-password"), password);
+			
+			  sendKeys(By.id("login-password"), new
+			  String(DatatypeConverter.parseBase64Binary(password),
+			  StandardCharsets.UTF_8));
+			 
+		//	sendKeys(By.id("login-password"), password);
 			findElement(By.xpath("//div/input[contains(@class,'btn btn-primary')]")).click();
 
 			try {
